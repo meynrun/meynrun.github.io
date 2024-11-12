@@ -6,23 +6,67 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ZapFiles</title>
+    <style>
+        body {
+            background: #0093EC;
+            background: radial-gradient(at center, #0098f1, #0092ec);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 20px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-size: clamp(24px, 2.5vw, 64px);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 620px;
+        }
+        p {
+            font-size: clamp(24px, 1.5vw, 38px);
+        }
+        a {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: #006fe5;
+            transition: background-color 0.3s ease;
+            border: transparent 2px solid;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #005dc3;
+                border: #0051ff 2px solid;
+            }
+        }
+
+        h1 {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-      <h1>ZapFiles</h1>
-      <p>Python developer from Russia</p>
-      <div class="social">
-          <p class="social-link">
-              <a href="https://github.com/meynrun">
-                  <img src="./assets/github.svg" alt="GitHub" height="50px">
-              </a>
-          </p>
-          <p class="social-link">
-              <a href="https://t.me/Meynrun">
-                  <img src="./assets/telegram.svg" alt="Telegram" height="50px">
-              </a>
-          </p>
-      </div>
-  </div>
+    <div class="container">
+        <h1>ZapFiles</h1>
+        <p>A secure file transfer tool that ensures the privacy of your data through end-to-end encryption.</p>
+        <div class="actions">
+            <a href="https://github.com/meynrun/ZapFiles/releases/latest/download/Setup-x64.exe" class="btn green">
+                Download for <img src="../assets/windows.svg" alt="Windows" height="20px"> Windows
+            </a>
+            <a href="https://github.com/meynrun/ZapFiles" class="btn">GitHub</a>
+        </div>
+    </div>
 </body>
 </html>
