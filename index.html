@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meynrun</title>
+    <style>
+        body {
+            background: #0093EC;
+            background: radial-gradient(at center, #008fe3, #0092ec);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-size: clamp(24px, 2.5vw, 64px);
+            /*filter: drop-shadow(0 0 64px rgba(0, 0, 0, 0.5));*/
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 620px;
+        }
+        .social {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            padding: 10px 0;
+        }
+        p {
+            font-size: clamp(24px, 2.5vw, 38px);
+            margin: 0;
+        }
+
+        .social-link {
+            filter: drop-shadow(0 0 64px rgba(0, 0, 0, 0.5));
+            transition: all 0.5s cubic-bezier(.77,0,.18,1);
+
+            &:hover {
+                filter: drop-shadow(0 0 16px rgb(185, 205, 255));
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 style="margin: 0">Meynrun</h1>
+    <p>Python developer from Russia</p>
+    <div class="social">
+        <p class="social-link">
+            <a href="https://github.com/meynrun">
+                <img src="./assets/github.svg" alt="GitHub" height="50px">
+            </a>
+        </p>
+        <p class="social-link">
+            <a href="https://t.me/Meynrun">
+                <img src="./assets/telegram.svg" alt="Telegram" height="50px">
+            </a>
+        </p>
+    </div>
+</div>
+</body>
+</html>
