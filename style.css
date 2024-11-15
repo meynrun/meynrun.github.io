@@ -228,3 +228,9 @@ hr {
         width: 300px;
     }
 }
+
+@media (max-width:320px)  { .hide {transition: none} }
+@media (max-width:480px)  { .hide {transition: none} }
+@media (max-width:600px)  { .hide {transition: none} }
+@media (max-width:800px)  { .hide {transition: none} }
+@media (max-width:1026px) { .hide {transition: none} }
