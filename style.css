@@ -236,3 +236,4 @@ hr {
 @media (max-width:600px)  { .hide {transition: none} }
 @media (max-width:800px)  { .hide {transition: none} }
 @media (max-width:1026px) { .hide {transition: none} }
+@media screen and (prefers-reduced-motion) { .hide {transition: none !important} }
