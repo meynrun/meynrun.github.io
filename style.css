@@ -1,0 +1,138 @@
+body {
+    background: #0093EC;
+    background: radial-gradient(at center, #0098f1, #0092ec);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-size: clamp(24px, 2.5vw, 64px);
+    user-select: none;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 512px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+p {
+    font-size: clamp(24px, 1.5vw, 28px);
+}
+a {
+    font-size: clamp(24px, 1.5vw, 38px);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: rgba(0, 111, 230, 0.5);
+    transition: background-color 0.3s ease;
+    border: transparent 2px solid;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 94, 194, 0.5);
+        border: rgba(0, 111, 230, 0.5) 2px solid;
+    }
+
+    &:active {
+        background-color: rgba(0, 111, 230, 0.5);
+        border: rgba(0, 94, 194, 0.5) 2px solid;
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.title {
+    width: 100%;
+
+    h1 {
+        margin: 10px 0 ;
+    }
+
+    .slogan {
+        margin: 0;
+        font-size: clamp(24px, 1.5vw, 28px);
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 512px) {
+    .container {
+        padding: 30px;
+    }
+}
+
+hr {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+
+    a img {
+        height: clamp(25px, 3.5vw, 40px);
+    }
+}
+
+.glow:hover {animation: ease glow 1s infinite;}
+.blue-glow:hover {animation: ease blue-glow 1s infinite;}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+    }
+    100% {
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+}
+
+@keyframes blue-glow {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(0, 151, 230, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgba(0, 151, 230, 1));
+    }
+    100% {
+        filter: drop-shadow(0 0 10px rgba(0, 151, 230, 0.5));
+    }
+}
