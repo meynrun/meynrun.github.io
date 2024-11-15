@@ -211,6 +211,7 @@ hr {
             align-items: center;
             gap: 10px;
             font-weight: 700;
+            font-size: 36px;
 
             img {
                 height: clamp(60px, 3.5vw, 100px);
