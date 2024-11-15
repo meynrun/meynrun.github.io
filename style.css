@@ -31,6 +31,23 @@ body {
     max-width: 620px;
 }
 
+.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.developer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    * {
+        margin: 0;
+    }
+}
 
 p {
     font-size: clamp(24px, 1.5vw, 28px);
