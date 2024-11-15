@@ -20,6 +20,7 @@
             height: 100vh;
             overflow: hidden;
             font-size: clamp(24px, 2.5vw, 64px);
+            user-select: none;
         }
         .container {
             display: flex;
@@ -69,6 +70,18 @@
             text-align: center;
         }
 
+        .title {
+            width: 100%;
+
+            h1 {
+                margin: 10px 0 ;
+            }
+
+            .slogan {
+                margin: 0;
+                font-size: clamp(24px, 1.5vw, 28px);
+            }
+        }
 
         @media screen and (max-width: 512px) {
             .container {
@@ -87,21 +100,75 @@
                 padding: 30px;
             }
         }
+
+        hr {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .toolbar {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            width: 100%;
+
+            a img {
+                height: clamp(25px, 3.5vw, 40px);
+            }
+        }
+
+        .glow:hover {animation: ease glow 1s infinite;}
+        .blue-glow:hover {animation: ease blue-glow 1s infinite;}
+
+        @keyframes glow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+            }
+            100% {
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            }
+        }
+
+        @keyframes blue-glow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(0, 111, 230, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 10px rgba(0, 111, 230, 1));
+            }
+            100% {
+                filter: drop-shadow(0 0 10px rgba(0, 111, 230, 0.5));
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="toolbar">
+            <a class="glow" href="https://github.com/meynrun/ZapFiles">
+                <img src="../assets/github.svg" alt="GitHub" height="30px">
+            </a>
+            <a href="/" class="glow">
+                <img src="../assets/close.svg" alt="Back" height="30px">
+            </a>
+        </div>
         <div class="title">
             <h1>ZapFiles</h1>
             <p class="slogan">Share files. Fast. Secure.</p>
         </div>
 
+        <hr>
+
         <p>A secure file transfer tool that ensures the privacy of your data through end-to-end encryption.</p>
         <div class="actions">
-            <a href="https://github.com/meynrun/ZapFiles/releases/latest/download/Setup-x64.exe" class="btn green">
+            <a href="https://github.com/meynrun/ZapFiles/releases/latest/download/Setup-x64.exe" class="btn blue-glow">
                 Download for <img src="../assets/windows.svg" alt="Windows" height="20px"> Windows
             </a>
-            <a href="https://github.com/meynrun/ZapFiles">GitHub</a>
         </div>
     </div>
 </body>
