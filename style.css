@@ -241,7 +241,7 @@ hr {
     }
 
     .cards {
-        grid-template-columns: 1fr; /* Один столбец */
+        grid-template-columns: 1fr;
         gap: 10px;
     }
 
