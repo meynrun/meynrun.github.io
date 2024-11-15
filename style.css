@@ -8,8 +8,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
     font-size: clamp(24px, 2.5vw, 64px);
     user-select: none;
 }
@@ -29,6 +27,22 @@ body {
     align-items: center;
     justify-content: center;
     max-width: 620px;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100vh;
+}
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    max-width: 512px;
 }
 
 .social {
@@ -172,4 +186,66 @@ hr {
 .show {
     opacity: 1 !important;
     filter: blur(0);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    min-width: 170px;
+    max-width: 100%;
+    text-align: center;
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        span {
+            font-size: clamp(24px, 2.5vw, 36px);
+        }
+    }
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+@media screen and (max-width: 400px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .projects {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .developer, .social {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr; /* Один столбец */
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
+    }
 }
