@@ -28,7 +28,6 @@
             justify-content: center;
             max-width: 512px;
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
         }
@@ -62,10 +61,6 @@
             }
         }
 
-        h1 {
-            margin: 0;
-        }
-
         .actions {
             display: flex;
             flex-direction: column;
@@ -73,11 +68,34 @@
             padding: 10px 0;
             text-align: center;
         }
+
+
+        @media screen and (max-width: 512px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+        @media screen and (min-width: 512px) {
+            .container {
+                padding: 30px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>ZapFiles</h1>
+        <div class="title">
+            <h1>ZapFiles</h1>
+            <p class="slogan">Share files. Fast. Secure.</p>
+        </div>
+
         <p>A secure file transfer tool that ensures the privacy of your data through end-to-end encryption.</p>
         <div class="actions">
             <a href="https://github.com/meynrun/ZapFiles/releases/latest/download/Setup-x64.exe" class="btn green">
