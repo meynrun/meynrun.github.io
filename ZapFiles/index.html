@@ -27,9 +27,13 @@
             align-items: center;
             justify-content: center;
             max-width: 512px;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         p {
-            font-size: clamp(24px, 1.5vw, 38px);
+            font-size: clamp(24px, 1.5vw, 28px);
         }
         a {
             font-size: clamp(24px, 1.5vw, 38px);
@@ -50,6 +54,11 @@
             &:hover {
                 background-color: #005dc3;
                 border: #006fe5 2px solid;
+            }
+
+            &:active {
+                background-color: #006fe5;
+                border: #005dc3 2px solid;
             }
         }
 
