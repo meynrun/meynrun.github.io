@@ -101,19 +101,19 @@ a {
 }
 
 @media screen and (max-width: 512px) {
-    .container {
+    .project {
         padding: 20px;
     }
 }
 
 @media screen and (max-width: 400px) {
-    .container {
+    .project {
         padding: 10px;
     }
 }
 
 @media screen and (min-width: 512px) {
-    .container {
+    .project {
         padding: 30px;
     }
 }
