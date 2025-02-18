@@ -30,7 +30,6 @@ h1 {
 .info-box {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     gap: 20px;
 }
@@ -215,7 +214,18 @@ hr {
     }
 }
 
-@media (max-width:320px)  { .hide {transition: none} }
-@media (max-width:480px)  { .hide {transition: none} }
-@media (max-width:600px)  { .hide {transition: none} }
+@media screen and (max-width:480px)  {
+    .hide {
+        transition: none !important;
+    }
+
+    .info-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0 !important;
+        .info {
+            margin: 0;
+        }
+    }
+}
 @media screen and (prefers-reduced-motion) { .hide {transition: none !important} }
