@@ -17,6 +17,24 @@ h1 {
     font-size: clamp(28px, 5vw, 64px);
 }
 
+.info {
+    span {
+        display: ruby;
+    }
+    img {
+        vertical-align: middle;
+        display: block;
+    }
+}
+
+.info-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
 .project {
     display: flex;
     flex-direction: column;
@@ -75,7 +93,7 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
+    justify-content: end;
     width: 100%;
     gap: 10px;
 }
