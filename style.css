@@ -82,12 +82,6 @@ nav {
     filter: drop-shadow(0 0 10px rgba(0, 151, 230, 0.5));
 }
 
-.red-strong {
-    color: rgb(255, 0, 68);
-    font-weight: bolder;
-    filter: drop-shadow(0 0 10px rgba(255, 0, 68, 0.5));
-}
-
 .social {
     display: flex;
     flex-direction: row;
