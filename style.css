@@ -47,6 +47,11 @@ h1 {
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    padding: 42px;
+
+    .description {
+        font-size: clamp(20px, 1.5vw, 48px);
+    }
 }
 
 .container {
@@ -169,12 +174,6 @@ a {
     }
 }
 
-@media screen and (min-width: 512px) {
-    .project {
-        padding: 30px;
-    }
-}
-
 hr {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -202,17 +201,6 @@ hr {
 .show {
     opacity: 1 !important;
     filter: blur(0);
-}
-
-@media screen and (max-width: 550px) {
-    .cards {
-        width: 400px;
-    }
-}
-@media screen and (max-width: 450px) {
-    .cards {
-        width: 300px;
-    }
 }
 
 @media screen and (max-width:480px)  {
