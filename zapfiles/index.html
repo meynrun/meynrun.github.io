@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ZapFiles</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=download">
     <script src="../script.js"></script>
 </head>
-<body style="background: radial-gradient(at center, #0098f1, #0092ec);">
+<body>
     <nav class="hide">
         <div class="project">
             <div class="toolbar">
@@ -20,20 +21,27 @@
                     <img src="../assets/close.svg" alt="Back" height="30px">
                 </a>
             </div>
-            <div class="title code-font">
-                <h1>ZapFiles</h1>
-                <p class="slogan">Share files. Fast. Secure.</p>
+
+            <div>
+                <div class="title code-font">
+                    <h1>ZapFiles</h1>
+                    <p class="slogan">Share files. Fast. Secure.</p>
+                </div>
+                <hr>
+                <p class="description">A secure file transfer tool that ensures the privacy of your data through end-to-end encryption.</p>
+                <hr>
             </div>
-
-            <hr>
-
-            <p class="description">A secure file transfer tool that ensures the privacy of your data through end-to-end encryption.</p>
-
-            <hr>
 
             <div class="actions">
                 <a href="https://github.com/meynrun/ZapFiles/releases/latest/download/Setup-x64.exe" class="btn">
-                    Download for <img src="../assets/windows.svg" alt="Windows" height="20px"> Windows
+                    <img src="../assets/download.svg" alt="Download" class="btn-icon-left">
+                    <span class="btn-text">Download for Windows</span>
+                    <img src="../assets/windows.svg" alt="Windows" class="btn-icon-right">
+                </a>
+                <a href="https://github.com/meynrun/ZapFiles/tree/master?tab=readme-ov-file#-installing-from-source" class="btn">
+                    <img src="../assets/open_in_new.svg" alt="Open in new tab" class="btn-icon-left">
+                    <span class="btn-text">Build from Source</span>
+                    <img src="../assets/code.svg" alt="Source" class="btn-icon-right">
                 </a>
             </div>
         </div>
