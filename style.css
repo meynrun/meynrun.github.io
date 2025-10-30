@@ -1,20 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
 
+:root {
+    font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: var(--text);
+    background-color: var(--crust);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+
+    --status-bar-height: env(safe-area-inset-top, 24px);
+    --nav-bar-height: env(safe-area-inset-bottom, 48px);
+
+    /*Color palette*/
+    --red: rgb(243, 139, 168);
+    --mauve: rgb(203, 166, 247);
+    --pink: rgb(245, 194, 231);
+    --flamingo: rgb(242, 205, 205);
+    --rosewater: rgb(245, 224, 220);
+    --maroon: rgb(235, 160, 172);
+    --peach: rgb(250, 179, 135);
+    --yellow: rgb(249, 226, 175);
+    --green: rgb(166, 227, 161);
+    --teal: rgb(148, 226, 213);
+    --sky: rgb(137, 220, 235);
+    --sapphire: rgb(116, 199, 236);
+    --blue: rgb(137, 180, 250);
+    --lavender: rgb(180, 190, 254);
+    --text: rgb(205, 214, 244);
+    --subtext-0: rgb(166, 173, 200);
+    --subtext-1: rgb(186, 194, 222);
+    --overlay-0: rgb(108, 112, 134);
+    --overlay-1: rgb(127, 132, 156);
+    --overlay-2: rgb(147, 153, 178);
+    --surface-0: rgb(49, 50, 68);
+    --surface-1: rgb(69, 71, 90);
+    --surface-2: rgb(88, 91, 112);
+    --base: rgb(30, 30, 46);
+    --mantle: rgb(24, 24, 37);
+    --crust: rgb(17, 17, 27);
+}
+
 body {
-    background: #1a1919;
-    color: rgba(255, 255, 255, 0.9);
-    font-family: Inter, ui-sans-serif, "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: clamp(24px, 2.5vw, 64px);
-    user-select: none;
 }
 
 .code-font {
-    font-family: Funnel Display, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif
+    font-family: Funnel Display, Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -26,7 +71,6 @@ h1 {
         display: ruby;
     }
     img {
-        vertical-align: middle;
         display: block;
     }
 }
@@ -44,10 +88,9 @@ h1 {
     align-items: center;
     justify-content: center;
     max-width: 768px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.04) 100%);
+    background-color: var(--mantle);
     border-radius: 25px;
     padding: 42px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
 
     .description {
         font-size: clamp(20px, 1.5vw, 48px);
@@ -86,7 +129,7 @@ nav {
 }
 
 .blue-strong {
-    color: #0093EC;
+    color: var(--blue);
     font-weight: bolder;
     filter: drop-shadow(0 0 10px rgba(0, 151, 230, 0.5));
 }
@@ -116,21 +159,16 @@ a {
     justify-content: space-between;
     gap: 15px;
     padding: 15px 25px;
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--crust);
     cursor: pointer;
     font-size: clamp(18px, 3vw, 28px);
     width: 100%;
     box-sizing: border-box;
-    transition: background-color 0.05s ease;
+    transition: opacity 0.1s ease;
     opacity: 1;
-}
-
-.btn:hover {
-    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .btn:active {
@@ -149,6 +187,16 @@ a {
 
 .btn-icon-right {
     height: 20px;
+}
+
+.download-btn {
+    color: var(--mantle);
+    background-color: var(--green);
+}
+
+.build-btn {
+    color: var(--mantle);
+    background-color: var(--lavender);
 }
 
 .actions {
