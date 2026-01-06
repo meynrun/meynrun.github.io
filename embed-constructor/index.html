@@ -258,16 +258,16 @@
             document.getElementById('preContent').style.display = content ? 'block' : 'none';
 
             document.getElementById('jsonRaw').innerText = JSON.stringify(finalJson, null, 2);
+            document.getElementById('jsonRaw').dataset.minified = JSON.stringify(finalJson);
         }
 
         function copyJson() {
-            const text = document.getElementById('jsonRaw').innerText;
+            const text = document.getElementById('jsonRaw').dataset.minified;
             handleCopy(text, event.target);
         }
 
         function copyBase64() {
-            const text = document.getElementById('jsonRaw').innerText;
-            // Корректное преобразование UTF-8 в Base64
+            const text = document.getElementById('jsonRaw').dataset.minified;
             const bytes = new TextEncoder().encode(text);
             const binString = String.fromCodePoint(...bytes);
             const base64 = btoa(binString);
