@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Bot Post Constructor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #36393f;
+            color: #dcddde;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .editor,
+        .preview {
+            flex: 1;
+            background: #2f3136;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.2em;
+            border-bottom: 1px solid #40444b;
+            padding-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-size: 0.9em;
+            color: #b9bbbe;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            background: #40444b;
+            border: 1px solid #202225;
+            border-radius: 4px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            background: #202225;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .discord-msg {
+            background: #36393f;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .content-text {
+            margin-bottom: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .embed-box {
+            border-left: 4px solid #ffff00;
+            background: #2f3136;
+            padding: 12px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+        }
+
+        .embed-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .embed-desc {
+            font-size: 0.9em;
+            color: #dcddde;
+            line-height: 1.3;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            object-fit: cover;
+            margin-left: 10px;
+        }
+
+        .json-output {
+            width: calc(100% - 30px);
+            max-width: 970px;
+            margin-top: 20px;
+            background: #202225;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        pre {
+            margin: 0;
+            color: #85e89d;
+            font-family: 'Consolas', monospace;
+            overflow-x: auto;
+            font-size: 0.9em;
+            min-height: 40px;
+        }
+
+        .controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            background: #5865f2;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #4752c4;
+        }
+
+        button.b64-btn {
+            background: #4f545c;
+        }
+
+        button.b64-btn:hover {
+            background: #686d73;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Embed Bot Post Constructor</h1>
+
+    <div class="container">
+        <div class="editor">
+            <h2>Настройки поста</h2>
+            <label>Основной текст сообщения (content)</label>
+            <textarea id="inContent" rows="3">👋 Привет! Это мой новый пост.</textarea>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="useEmbed" checked>
+                <label style="margin: 0;" for="useEmbed">Использовать Embed (карточку)</label>
+            </div>
+
+            <div id="embedFields">
+                <label>Заголовок карточки</label>
+                <input type="text" id="inTitle" value="Заголовок">
+
+                <label>Описание</label>
+                <textarea id="inDesc" rows="3">Описание вашего контента здесь...</textarea>
+
+                <label>Цвет полоски</label>
+                <input type="color" id="inColor" value="#0092ec" style="width: 100%; height: 30px; cursor: pointer;">
+
+                <label>URL картинки (thumbnail)</label>
+                <input type="text" id="inThumb" placeholder="https://..." value="https://placehold.co/80">
+            </div>
+        </div>
+
+        <div class="preview">
+            <h2>Предпросмотр</h2>
+            <div class="discord-msg">
+                <div id="preContent" class="content-text"></div>
+                <div id="preEmbed" class="embed-box">
+                    <div>
+                        <div id="preTitle" class="embed-title"></div>
+                        <div id="preDesc" class="embed-desc"></div>
+                    </div>
+                    <img id="preThumb" class="thumb" src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="json-output">
+        <div class="controls">
+            <button class="b64-btn" onclick="copyBase64()">Копировать Base64</button>
+            <button onclick="copyJson()">Копировать JSON</button>
+        </div>
+        <pre id="jsonRaw"></pre>
+    </div>
+
+    <script>
+        const inputs = ['inContent', 'inTitle', 'inDesc', 'inColor', 'inThumb', 'useEmbed'];
+
+        function update() {
+            const useEmbed = document.getElementById('useEmbed').checked;
+            const embedFieldsBlock = document.getElementById('embedFields');
+            const preEmbed = document.getElementById('preEmbed');
+
+            const content = document.getElementById('inContent').value;
+            let finalJson = { content: content };
+
+            if (useEmbed) {
+                embedFieldsBlock.classList.remove('hidden');
+                preEmbed.classList.remove('hidden');
+
+                finalJson.embed = {
+                    title: document.getElementById('inTitle').value,
+                    description: document.getElementById('inDesc').value,
+                    color: parseInt(document.getElementById('inColor').value.replace('#', ''), 16),
+                    thumbnail: document.getElementById('inThumb').value
+                };
+
+                document.getElementById('preTitle').innerText = finalJson.embed.title;
+                document.getElementById('preDesc').innerText = finalJson.embed.description;
+                document.getElementById('preEmbed').style.borderColor = document.getElementById('inColor').value;
+                document.getElementById('preThumb').src = finalJson.embed.thumbnail;
+                document.getElementById('preThumb').style.display = finalJson.embed.thumbnail ? 'block' : 'none';
+            } else {
+                embedFieldsBlock.classList.add('hidden');
+                preEmbed.classList.add('hidden');
+            }
+
+            document.getElementById('preContent').innerText = content;
+            document.getElementById('preContent').style.display = content ? 'block' : 'none';
+
+            document.getElementById('jsonRaw').innerText = JSON.stringify(finalJson, null, 2);
+        }
+
+        function copyJson() {
+            const text = document.getElementById('jsonRaw').innerText;
+            handleCopy(text, event.target);
+        }
+
+        function copyBase64() {
+            const text = document.getElementById('jsonRaw').innerText;
+            // Корректное преобразование UTF-8 в Base64
+            const bytes = new TextEncoder().encode(text);
+            const binString = String.fromCodePoint(...bytes);
+            const base64 = btoa(binString);
+            handleCopy(base64, event.target);
+        }
+
+        function handleCopy(text, btn) {
+            navigator.clipboard.writeText(text);
+            const originalText = btn.innerText;
+            btn.innerText = 'Готово!';
+            setTimeout(() => btn.innerText = originalText, 2000);
+        }
+
+        inputs.forEach(id => document.getElementById(id).addEventListener('input', update));
+        update();
+    </script>
+</body>
+
+</html>
