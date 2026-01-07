@@ -20,7 +20,7 @@
             display: flex;
             gap: 20px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
         }
 
         .editor,
@@ -32,25 +32,43 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
+        .editor {
+            overflow-y: auto;
+            max-height: 85vh;
+        }
+
         h2 {
             margin-top: 0;
             color: #fff;
-            font-size: 1.2em;
+            font-size: 1.1em;
             border-bottom: 1px solid #40444b;
             padding-bottom: 10px;
         }
 
         label {
             display: block;
-            margin: 15px 0 5px;
-            font-size: 0.9em;
+            margin: 12px 0 5px;
+            font-size: 0.85em;
             color: #b9bbbe;
+            font-weight: bold;
+        }
+
+        /* Стиль для переключателя */
+        .toggle-container {
+            background: #40444b;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: 1px solid #5865f2;
         }
 
         input[type="text"],
         textarea {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background: #40444b;
             border: 1px solid #202225;
             border-radius: 4px;
@@ -58,26 +76,27 @@
             box-sizing: border-box;
         }
 
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            background: #202225;
+        .field-item,
+        .button-item {
+            background: #36393f;
             padding: 10px;
             border-radius: 4px;
+            margin-bottom: 10px;
+            border: 1px solid #202225;
         }
 
+        /* Preview Styles */
         .discord-msg {
             background: #36393f;
-            padding: 5px;
+            padding: 10px;
             border-radius: 4px;
+            width: calc(100% - 20px);
         }
 
         .content-text {
             margin-bottom: 8px;
             white-space: pre-wrap;
-            word-wrap: break-word;
+            font-size: 0.95em;
         }
 
         .embed-box {
@@ -86,32 +105,111 @@
             padding: 12px;
             border-radius: 4px;
             display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .embed-header-wrapper {
+            display: flex;
             justify-content: space-between;
-            margin-top: 5px;
         }
 
         .embed-title {
             font-weight: bold;
-            margin-bottom: 8px;
+            color: #fff;
+            margin-bottom: 4px;
+            font-size: 1em;
         }
 
         .embed-desc {
             font-size: 0.9em;
             color: #dcddde;
-            line-height: 1.3;
+            margin-bottom: 8px;
         }
 
-        .thumb {
-            width: 60px;
-            height: 60px;
+        .thumb-img {
+            width: 80px;
+            height: 80px;
             border-radius: 4px;
             object-fit: cover;
             margin-left: 10px;
         }
 
+        .main-embed-img {
+            width: 100%;
+            border-radius: 4px;
+            margin-top: 10px;
+            max-height: 300px;
+            object-fit: contain;
+            background: #202225;
+        }
+
+        .fields-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .field-col {
+            grid-column: span 3;
+        }
+
+        .field-col.inline {
+            grid-column: span 1;
+        }
+
+        .field-name {
+            font-weight: bold;
+            font-size: 0.85em;
+            color: #fff;
+        }
+
+        .field-value {
+            font-size: 0.85em;
+            color: #dcddde;
+        }
+
+        .preview-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .ds-button {
+            background: #4f545c;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .ds-button:after {
+            content: ' ↗';
+            font-size: 0.8em;
+            margin-left: 5px;
+            opacity: 0.6;
+        }
+
+        .after-images {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .after-img {
+            width: 100%;
+            border-radius: 4px;
+        }
+
         .json-output {
-            width: calc(100% - 30px);
-            max-width: 970px;
+            width: 100%;
+            max-width: 1060px;
             margin-top: 20px;
             background: #202225;
             padding: 15px;
@@ -122,10 +220,9 @@
         pre {
             margin: 0;
             color: #85e89d;
-            font-family: 'Consolas', monospace;
+            font-family: monospace;
             overflow-x: auto;
-            font-size: 0.9em;
-            min-height: 40px;
+            font-size: 0.85em;
         }
 
         .controls {
@@ -136,35 +233,30 @@
             gap: 8px;
         }
 
-        button {
+        button.action-btn {
             background: #5865f2;
             color: white;
             border: none;
-            padding: 8px 15px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
+            font-size: 0.8em;
         }
 
-        button:hover {
-            background: #4752c4;
-        }
-
-        button.b64-btn {
-            background: #4f545c;
-        }
-
-        button.b64-btn:hover {
-            background: #686d73;
+        button.add-btn {
+            background: #43b581;
+            margin-top: 5px;
+            width: 100%;
         }
 
         .hidden {
             display: none !important;
         }
 
-        textarea {
-            resize: vertical;
+        .disabled-section {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(1);
         }
     </style>
 </head>
@@ -174,29 +266,48 @@
     <h1>Embed Bot Post Constructor</h1>
 
     <div class="container">
-        <div class="editor">
-            <h2>Настройки поста</h2>
-            <label>Основной текст сообщения (content)</label>
-            <textarea id="inContent" rows="3">👋 Привет! Это мой новый пост.</textarea>
+        <div class="editor" id="editorForm">
+            <h2>Настройки</h2>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="useEmbed" checked>
-                <label style="margin: 0;" for="useEmbed">Использовать Embed (карточку)</label>
-            </div>
+            <label class="toggle-container">
+                <input type="checkbox" id="useEmbed">
+                Включить Embed (карточку)
+            </label>
 
-            <div id="embedFields">
-                <label>Заголовок карточки</label>
-                <input type="text" id="inTitle" value="Заголовок">
+            <label>Текст сообщения (content)</label>
+            <textarea id="inContent" rows="2" placeholder="Основной текст сообщения">Это основной текст сообщения...</textarea>
+
+            <div id="embedSettingsSection">
+                <label>Заголовок эмбеда</label>
+                <input type="text" id="inTitle" placeholder="Заголовок эмбеда">
 
                 <label>Описание</label>
-                <textarea id="inDesc" rows="3">Описание вашего контента здесь...</textarea>
+                <textarea id="inDesc" rows="2" placeholder="Основное описание внутри карточки..."></textarea>
 
-                <label>Цвет полоски</label>
-                <input type="color" id="inColor" value="#0092ec" style="width: 100%; height: 30px; cursor: pointer;">
+                <label>Цвет</label>
+                <input type="color" id="inColor" value="#0092ec" style="width:100%; height:30px;">
 
-                <label>URL картинки (thumbnail)</label>
-                <input type="text" id="inThumb" placeholder="https://..." value="https://placehold.co/80x80.png">
+                <label>Thumbnail (справа)</label>
+                <input type="text" id="inThumb" placeholder="https://placehold.co/80x80.png">
+
+                <label>Основная картинка (image)</label>
+                <input type="text" id="inImage" placeholder="https://placehold.co/480x270.png">
+
+                <div id="fieldsContainer">
+                    <label>Поля (Fields)</label>
+                </div>
+                <button class="action-btn add-btn" onclick="addField()">+ Добавить поле</button>
             </div>
+
+            <hr style="margin: 20px 0; border: 0; border-top: 1px solid #40444b;">
+
+            <div id="buttonsContainer">
+                <label>Кнопки (Buttons)</label>
+            </div>
+            <button class="action-btn add-btn" onclick="addButton()">+ Добавить кнопку</button>
+
+            <label>Картинки после сообщения (images_after)</label>
+            <textarea id="inImagesAfter" placeholder="Одна ссылка на строку"></textarea>
         </div>
 
         <div class="preview">
@@ -204,84 +315,175 @@
             <div class="discord-msg">
                 <div id="preContent" class="content-text"></div>
                 <div id="preEmbed" class="embed-box">
-                    <div>
-                        <div id="preTitle" class="embed-title"></div>
-                        <div id="preDesc" class="embed-desc"></div>
+                    <div class="embed-header-wrapper">
+                        <div style="flex:1">
+                            <div id="preTitle" class="embed-title"></div>
+                            <div id="preDesc" class="embed-desc"></div>
+                        </div>
+                        <img id="preThumb" class="thumb-img" src="" alt="">
                     </div>
-                    <img id="preThumb" class="thumb" src="" alt="">
+                    <div id="preFields" class="fields-grid"></div>
+                    <img id="preMainImg" class="main-embed-img" src="" alt="">
                 </div>
+                <div id="preButtons" class="preview-buttons"></div>
+                <div id="preAfterImages" class="after-images"></div>
             </div>
         </div>
     </div>
 
     <div class="json-output">
         <div class="controls">
-            <button class="b64-btn" onclick="copyBase64()">Копировать Base64</button>
-            <button onclick="copyJson()">Копировать JSON</button>
+            <button class="action-btn" onclick="copyJson()">JSON</button>
+            <button class="action-btn" style="background:#4f545c" onclick="copyBase64()">Base64</button>
         </div>
         <pre id="jsonRaw"></pre>
     </div>
 
     <script>
-        const inputs = ['inContent', 'inTitle', 'inDesc', 'inColor', 'inThumb', 'useEmbed'];
+        let fields = [];
+        let buttons = [];
+
+        function addField() {
+            fields.push({ name: "Заголовок", value: "Значение", inline: true });
+            renderEditorLists();
+            update();
+        }
+
+        function addButton() {
+            buttons.push({ label: "Ссылка", url: "https://example.com" });
+            renderEditorLists();
+            update();
+        }
+
+        function removeField(index) { fields.splice(index, 1); renderEditorLists(); update(); }
+        function removeButton(index) { buttons.splice(index, 1); renderEditorLists(); update(); }
+
+        function renderEditorLists() {
+            const fCont = document.getElementById('fieldsContainer');
+            const bCont = document.getElementById('buttonsContainer');
+
+            fCont.innerHTML = '<label>Поля (Fields)</label>';
+            fields.forEach((f, i) => {
+                const div = document.createElement('div');
+                div.className = 'field-item';
+                div.innerHTML = `
+                    <input type="text" value="${f.name}" oninput="fields[${i}].name=this.value;update()" placeholder="Имя">
+                    <input type="text" value="${f.value}" oninput="fields[${i}].value=this.value;update()" placeholder="Значение" style="margin-top:5px">
+                    <label style="display:inline; margin-left:10px;"><input type="checkbox" ${f.inline ? 'checked' : ''} onchange="fields[${i}].inline=this.checked;update()"> Inline</label>
+                    <button onclick="removeField(${i})" style="float:right; background:none; border:none; color:#f04747; cursor:pointer;">✖</button>
+                `;
+                fCont.appendChild(div);
+            });
+
+            bCont.innerHTML = '<label>Кнопки (Buttons)</label>';
+            buttons.forEach((b, i) => {
+                const div = document.createElement('div');
+                div.className = 'button-item';
+                div.innerHTML = `
+                    <input type="text" value="${b.label}" oninput="buttons[${i}].label=this.value;update()" placeholder="Текст кнопки" style="width:45%">
+                    <input type="text" value="${b.url}" oninput="buttons[${i}].url=this.value;update()" placeholder="URL" style="width:45%">
+                    <button onclick="removeButton(${i})" style="float:right; background:none; border:none; color:#f04747; cursor:pointer;">✖</button>
+                `;
+                bCont.appendChild(div);
+            });
+        }
 
         function update() {
             const useEmbed = document.getElementById('useEmbed').checked;
-            const embedFieldsBlock = document.getElementById('embedFields');
-            const preEmbed = document.getElementById('preEmbed');
-
             const content = document.getElementById('inContent').value;
-            let finalJson = { content: content };
+            const title = document.getElementById('inTitle').value;
+            const desc = document.getElementById('inDesc').value;
+            const colorHex = document.getElementById('inColor').value;
+            const thumb = document.getElementById('inThumb').value;
+            const mainImg = document.getElementById('inImage').value;
+            const afterImagesRaw = document.getElementById('inImagesAfter').value.split('\n').filter(l => l.trim() !== '');
 
+            // Визуальное управление редактором
+            document.getElementById('embedSettingsSection').classList.toggle('disabled-section', !useEmbed);
+            document.getElementById('preEmbed').style.display = useEmbed ? 'flex' : 'none';
+
+            // JSON Build
+            const config = {
+                content: content,
+                buttons: buttons,
+                images_after: afterImagesRaw
+            };
+
+            // Добавляем эмбед только если галочка активна
             if (useEmbed) {
-                embedFieldsBlock.classList.remove('hidden');
-                preEmbed.classList.remove('hidden');
-
-                finalJson.embed = {
-                    title: document.getElementById('inTitle').value,
-                    description: document.getElementById('inDesc').value,
-                    color: parseInt(document.getElementById('inColor').value.replace('#', ''), 16),
-                    thumbnail: document.getElementById('inThumb').value
+                config.embed = {
+                    title: title,
+                    description: desc,
+                    color: parseInt(colorHex.replace('#', ''), 16),
+                    image: mainImg,
+                    thumbnail: thumb,
+                    fields: fields
                 };
-
-                document.getElementById('preTitle').innerText = finalJson.embed.title;
-                document.getElementById('preDesc').innerText = finalJson.embed.description;
-                document.getElementById('preEmbed').style.borderColor = document.getElementById('inColor').value;
-                document.getElementById('preThumb').src = finalJson.embed.thumbnail;
-                document.getElementById('preThumb').style.display = finalJson.embed.thumbnail ? 'block' : 'none';
-            } else {
-                embedFieldsBlock.classList.add('hidden');
-                preEmbed.classList.add('hidden');
             }
 
+            // Preview Render
             document.getElementById('preContent').innerText = content;
-            document.getElementById('preContent').style.display = content ? 'block' : 'none';
+            if (useEmbed) {
+                document.getElementById('preTitle').innerText = title;
+                document.getElementById('preDesc').innerText = desc;
+                document.getElementById('preEmbed').style.borderColor = colorHex;
+                
+                const preThumb = document.getElementById('preThumb');
+                preThumb.src = thumb; preThumb.style.display = thumb ? 'block' : 'none';
 
-            document.getElementById('jsonRaw').innerText = JSON.stringify(finalJson, null, 2);
-            document.getElementById('jsonRaw').dataset.minified = JSON.stringify(finalJson);
+                const preMain = document.getElementById('preMainImg');
+                preMain.src = mainImg; preMain.style.display = mainImg ? 'block' : 'none';
+
+                const preFields = document.getElementById('preFields');
+                preFields.innerHTML = '';
+                fields.forEach(f => {
+                    const fDiv = document.createElement('div');
+                    fDiv.className = f.inline ? 'field-col inline' : 'field-col';
+                    fDiv.innerHTML = `<div class="field-name">${f.name}</div><div class="field-value">${f.value}</div>`;
+                    preFields.appendChild(fDiv);
+                });
+            }
+
+            // Buttons & After Images (всегда рендерятся)
+            const preBtnCont = document.getElementById('preButtons');
+            preBtnCont.innerHTML = '';
+            buttons.forEach(b => {
+                const bA = document.createElement('a');
+                bA.className = 'ds-button';
+                bA.href = b.url; bA.innerText = b.label; bA.target = "_blank";
+                preBtnCont.appendChild(bA);
+            });
+
+            const preAfter = document.getElementById('preAfterImages');
+            preAfter.innerHTML = '';
+            afterImagesRaw.forEach(url => {
+                const img = document.createElement('img');
+                img.className = 'after-img'; img.src = url;
+                preAfter.appendChild(img);
+            });
+
+            document.getElementById('jsonRaw').innerText = JSON.stringify(config, null, 2);
+            document.getElementById('jsonRaw').dataset.minified = JSON.stringify(config);
         }
 
         function copyJson() {
-            const text = document.getElementById('jsonRaw').dataset.minified;
-            handleCopy(text, event.target);
+            navigator.clipboard.writeText(document.getElementById('jsonRaw').dataset.minified);
+            alert('JSON скопирован!');
         }
 
         function copyBase64() {
             const text = document.getElementById('jsonRaw').dataset.minified;
-            const bytes = new TextEncoder().encode(text);
-            const binString = String.fromCodePoint(...bytes);
-            const base64 = btoa(binString);
-            handleCopy(base64, event.target);
+            const base64 = btoa(unescape(encodeURIComponent(text)));
+            navigator.clipboard.writeText(base64);
+            alert('Base64 скопирован!');
         }
 
-        function handleCopy(text, btn) {
-            navigator.clipboard.writeText(text);
-            const originalText = btn.innerText;
-            btn.innerText = 'Готово!';
-            setTimeout(() => btn.innerText = originalText, 2000);
-        }
+        // Listeners
+        ['inContent', 'inTitle', 'inDesc', 'inColor', 'inThumb', 'inImage', 'inImagesAfter', 'useEmbed'].forEach(id => {
+            document.getElementById(id).addEventListener('input', update);
+        });
 
-        inputs.forEach(id => document.getElementById(id).addEventListener('input', update));
+        renderEditorLists();
         update();
     </script>
 </body>
